@@ -1,14 +1,15 @@
-import './App.css'
+import './App.css';
 
-import React from 'react';
+import {Routes } from 'react-router-dom';
+
 function App() {
 
   return (
-    <div className="App">
-    <header className="App-header">
-      <h1>lms-frontend</h1>
-    </header>
-  </div>
+   <>
+   <Routes>
+   {/* <Route path = "/" element= {<Home/>} ></Route> */}
+   </Routes>
+   </>
   );
 }
 
