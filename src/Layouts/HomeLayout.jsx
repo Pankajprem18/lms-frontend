@@ -31,14 +31,12 @@ function HomeLayout({ children }) {
 
   async function handleLogout(e) {
     e.preventDefault();
-    // Uncomment the following lines when the logout function is implemented
-    // const res = await dispatch(logout());
-    // if (res?.payload?.success) navigate("/");
-    navigate("/");
+    const res = await dispatch(logout());
+    if (res?.payload?.success) navigate("/");
   }
 
   return (
-    <div className='min-h-[90vh]'>
+    <div className="min-h-[90vh]">
       <div className="drawer absolute left-0 z-50 w-fit">
         <input className="drawer-toggle" id="my-drawer" type="checkbox" />
         <div className="drawer-content">
@@ -52,7 +50,7 @@ function HomeLayout({ children }) {
         </div>
         <div className="drawer-side w-0">
           <label htmlFor="my-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-48 sm:w80 bg-base-100 text-base-content relative">
+          <ul className="menu p-4 w-48 h-[100%] sm:w-80 bg-base-200 text-base-content relative">
             <li className="w-fit absolute right-2 z-50">
               <button onClick={hideDrawer}>
                 <AiFillCloseCircle size={24} />
@@ -61,46 +59,61 @@ function HomeLayout({ children }) {
             <li>
               <Link to="/">Home</Link>
             </li>
+
             {isLoggedIn && role === 'ADMIN' && (
               <li>
-                <Link to="/admin/dashbord">Admin DashBoard</Link>
+                <Link to="/admin/dashboard"> Admin DashBoard</Link>
               </li>
             )}
+            {isLoggedIn && role === 'ADMIN' && (
+              <li>
+                <Link to="/course/create"> Create new course</Link>
+              </li>
+            )}
+
             <li>
               <Link to="/courses">All Courses</Link>
             </li>
+
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
+
             <li>
               <Link to="/about">About Us</Link>
             </li>
-            <li className="mt-4 w-[90%]">
-              {!isLoggedIn && (
+
+            {!isLoggedIn && (
+              <li className="absolute bottom-4 w-[90%]">
                 <div className="w-full flex items-center justify-center space-x-2">
-                  <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full bg-blue-500 text-white'>
+                  <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full bg-blue-500 text-white hover:bg-blue-600'>
                     <Link to="/login">Login</Link>
                   </button>
-                  <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-green-500 text-white'>
+                  <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-green-500 text-white hover:bg-green-600'>
                     <Link to="/signup">Signup</Link>
                   </button>
                 </div>
-              )}
-              {isLoggedIn && (
+              </li>
+            )}
+
+            {isLoggedIn && (
+              <li className="absolute bottom-4 w-[90%]">
                 <div className="w-full flex items-center justify-center space-x-2">
-                  <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full bg-blue-500 text-white'>
+                  <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full bg-blue-500 text-white hover:bg-blue-600'>
                     <Link to="/user/profile">Profile</Link>
                   </button>
-                  <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-red-500 text-white'>
+                  <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-red-500 text-white hover:bg-red-600'>
                     <Link onClick={handleLogout}>Logout</Link>
                   </button>
                 </div>
-              )}
-            </li>
+              </li>
+            )}
           </ul>
         </div>
       </div>
+
       {children}
+
       <Footer />
     </div>
   );
