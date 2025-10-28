@@ -1,7 +1,7 @@
-import HomeLayout from "../Layouts/HomeLayout";
 import { Link } from "react-router-dom";
 
-import HomePageImage from "../Assets/Images/homePageMainImage.png"
+import HomePageImage from "../Assets/Images/homePageMainImage.png";
+import HomeLayout from "../Layouts/HomeLayout";
 
 function HomePage() {
     return (
@@ -15,7 +15,7 @@ function HomePage() {
                         </span>
                     </h1>
                     <p className="text-xl text-gray-200">
-                        We have a large library of courses taught by high skilled and qualified at a very affortdable rate
+                        We have a large library of courses taught by highly skilled and qualified faculties at a very affordable cost.
                     </p>
 
                     <div className="space-x-6">
@@ -33,13 +33,13 @@ function HomePage() {
                     </div>
                 </div>
 
-        <div className="w-1/2 flex items-center justify-center">
-        <img alt="homepage image" src={HomePageImage} />
-        </div>
+                <div className="w-1/2 flex items-center justify-center">
+                    <img alt="homepage image" src={HomePageImage} />
+                </div>
 
             </div>
         </HomeLayout>
-    )
+    );
 }
 
 export default HomePage;
